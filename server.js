@@ -15,15 +15,15 @@ app.use((req, res, next) => {
   console.log(log)
   fs.appendFile('server.log', log + '\n', (err) => {
     if (err) {
-      cconsole.log('Unable to append to server.log')
+      console.log('Unable to append to server.log')
     }
   })
   next()
 })
 
-app.use((req, res, next) => {
-  res.render('maintance.hbs')
-})
+// app.use((req, res, next) => {
+//   res.render('maintance.hbs')
+// })
 
 app.use(express.static(__dirname + '/public'))
 
@@ -40,6 +40,12 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page'
+  })
+})
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects'
   })
 })
 
